@@ -181,9 +181,6 @@ tr:nth-child(2n) {
 		margin-top: 45px;
 		margin-bottom: 50px;
 	}
-	table {
-		font-size: 12px;
-	}
 }
 
 @media screen and (max-width: 900px) {
@@ -194,7 +191,7 @@ tr:nth-child(2n) {
 		font-size: 12px;
 	}
 	table {
-		font-size: 10px;
+		font-size: 12px;
 	}
 }
 
