@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AnalysisPage</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://kit.fontawesome.com/73cecacda3.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<link href="https://fonts.googleapis.com/css?family=Concert+One|Anton|Lobster&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/analysisApp.css">
+</head>
+<body>
+	<div class="navbar">
+		<h3 id="brand"><i class="fas fa-chart-line"></i>AnalysisPage</h3>
+	</div>
+	<div id="header">
+		<div>
+			<span class="sidebar-grp">
+				<div class="sidebar-icon"><i class="fas fa-clipboard-list"></i></div>
+				<div class="sidebar-data"><span id="total-categories"></span></div>
+				<div class="sidebar-label">Total Categories</div>
+			</span>
+			<span class="sidebar-grp">
+				<div class="sidebar-icon"><i class="fas fa-piggy-bank"></i></div>
+				<div class="sidebar-data"><i class="fas fa-rupee-sign"></i><span id="total-revenue"></span></div>
+				<div class="sidebar-label">Total Revenue</div>
+			</span>
+			<span class="sidebar-grp">
+				<div class="sidebar-icon"><i class="fas fa-money-bill"></i></div>
+				<div class="sidebar-data"><i class="fas fa-rupee-sign"></i><span id="best-seller-revenue"></span></div>
+				<div class="sidebar-label long-label">Revenue from Best Sellers</div>
+			</span>
+			<span class="sidebar-grp">
+				<div class="sidebar-icon"><i class="fas fa-wallet"></i></div>
+				<div class="sidebar-data"><i class="fas fa-rupee-sign"></i><span id="average-revenue"></span></div>
+				<div class="sidebar-label">Average Revenue</div>
+			</span>
+		</div>
+	</div>
+	<div class="container">
+		<div class="column col1">
+			<canvas id="myChart2"></canvas>
+			<h6 class="graph-name">Segment v/s Number of Items of each Segment</h6>
+		</div>
+		<div class="column col2">
+			<canvas id="myChart1"></canvas>
+			<h6 class="graph-name">Revenue v/s Segment</h6>
+		</div>
+		<div class="column col3">
+		<span class="btn1">
+			<button onclick="showFilterOptions()" type="button" class="btn btn-light">Filter<i class="fas fa-filter"></i></button>
+		</span>
+		<div class="btn2">
+			<button onclick="showSortOptions()" type="button" class="btn btn-light">Sort<i class="fas fa-sort-amount-down"></i></button>
+		</div>
+		</div>
+		<table id="t">
+			<col width="160" style='mso-width-source:userset;mso-width-alt:7296;'/>
+			<col width="180" style='mso-width-source:userset;mso-width-alt:6019;'/>
+			<col width="180" style='mso-width-source:userset;mso-width-alt:5943;'/>
+			<col width="160" style='mso-width-source:userset;mso-width-alt:3649;'/>
+			<col width="160" style='mso-width-source:userset;mso-width-alt:7974;'/>
+		    <tr>
+			  <th class="table-head">Category Name</th>
+			  <th class="table-head">First Transaction</th>
+			  <th class="table-head">Last Transaction</th>
+			  <th class="table-head">Revenue</th>
+			  <th class="table-head">Segment</th>
+			</tr>
+		  <tr>
+			<td>Accessories</td>
+			<td>04/09/2019</td>
+			<td>06/11/2019</td>
+			<td class="old-category-price">357.51</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Back To School</td>
+			<td>01/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">46250.29</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Bell Bottom Jeans</td>
+			<td>04/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="evergreen-price">628.54</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Bell Bottoms</td>
+			<td>01/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">10817.87</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Bikinis</td>
+			<td>03/09/2019</td>
+			<td>21/10/2019</td>
+			<td class="old-category-price">923.46</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Blazers</td>
+			<td>19/09/2019</td>
+			<td>16/11/2019</td>
+			<td class="old-category-price">446.67</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Bodycon Dresses</td>
+			<td>01/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">30848.68</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Bodysuits</td>
+			<td>11/09/2019</td>
+			<td>29/11/2019</td>
+			<td class="evergreen-price">1044.4</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Bomber Jackets</td>
+			<td>02/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="evergreen-price">851.26</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Bottoms</td>
+			<td>01/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">5129.73</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Bridal</td>
+			<td>19/09/2019</td>
+			<td>19/09/2019</td>
+			<td class="old-category-price">123</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Camouflage</td>
+			<td>05/09/2019</td>
+			<td>13/11/2019</td>
+			<td class="old-category-price">880.88</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Christmas List</td>
+			<td>25/10/2019</td>
+			<td>25/10/2019</td>
+			<td class="old-category-price">28.98</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Cover Ups</td>
+			<td>05/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="evergreen-price">1612.02</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Crop Top</td>
+			<td>01/09/2019</td>
+			<td>01/12/2019</td>
+			<td class="best-seller-price">8026.34</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Denim</td>
+			<td>09/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="evergreen-price">1310.8</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Denim Jackets</td>
+			<td>01/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">3727.08</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Dresses</td>
+			<td>16/09/2019</td>
+			<td>02/12/2019</td>
+			<td>606.61</td>
+			<td>New Category</td>
+		  </tr>
+		  <tr>
+			<td>Elizabeth K Dresses</td>
+			<td>10/09/2019</td>
+			<td>28/11/2019</td>
+			<td class="old-category-price">2001.6</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Fur Vests</td>
+			<td>18/09/2019</td>
+			<td>18/11/2019</td>
+			<td class="old-category-price">318.66</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Halloween</td>
+			<td>10/09/2019</td>
+			<td>19/11/2019</td>
+			<td class="old-category-price">1833.66</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Hats</td>
+			<td>22/09/2019</td>
+			<td>12/11/2019</td>
+			<td class="old-category-price">252.44</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Homecoming</td>
+			<td>14/10/2019</td>
+			<td>22/11/2019</td>
+			<td class="old-category-price">286.6</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Hosiery</td>
+			<td>22/09/2019</td>
+			<td>06/11/2019</td>
+			<td class="old-category-price">234.9</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Hot</td>
+			<td>03/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">2870.42</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Intimate</td>
+			<td>27/09/2019</td>
+			<td>27/09/2019</td>
+			<td class="old-category-price">99.42</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Jackets</td>
+			<td>05/09/2019</td>
+			<td>24/11/2019</td>
+			<td class="evergreen-price">1136.45</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Jeans</td>
+			<td>07/09/2019</td>
+			<td>24/11/2019</td>
+			<td class="evergreen-price">1455.16</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Jogger Pants</td>
+			<td>04/09/2019</td>
+			<td>29/11/2019</td>
+			<td class="evergreen-price">1838.52</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Khaki Pants and Khaki Joggers</td>
+			<td>05/09/2019</td>
+			<td>25/10/2019</td>
+			<td class="old-category-price">244.85</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Leather Leggings</td>
+			<td>01/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">3771.69</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Leggings</td>
+			<td>05/09/2019</td>
+			<td>17/11/2019</td>
+			<td class="old-category-price">621.51</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Long Sleeve</td>
+			<td>23/09/2019</td>
+			<td>20/11/2019</td>
+			<td class="old-category-price">103.43</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Matching Sets</td>
+			<td>02/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">22136.45</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Mid+Maxi</td>
+			<td>27/09/2019</td>
+			<td>11/10/2019</td>
+			<td class="old-category-price">80.14</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Mini Dresses</td>
+			<td>12/11/2019</td>
+			<td>12/11/2019</td>
+			<td class="old-category-price">36.98</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>NULL</td>
+			<td>26/10/2019</td>
+			<td>01/12/2019</td>
+			<td>88.96</td>
+			<td>New Category</td>
+		  </tr>
+		  <tr>
+			<td>New Arrivals</td>
+			<td>01/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">92006.85</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>One Piece Swimsuits</td>
+			<td>02/09/2019</td>
+			<td>29/10/2019</td>
+			<td class="old-category-price">695.3</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Other</td>
+			<td>08/09/2019</td>
+			<td>27/10/2019</td>
+			<td class="old-category-price">316.58</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Outerwear</td>
+			<td>09/09/2019</td>
+			<td>30/11/2019</td>
+			<td class="evergreen-price">1252.68</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Overalls</td>
+			<td>18/09/2019</td>
+			<td>29/11/2019</td>
+			<td class="old-category-price">366.3</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Pants</td>
+			<td>02/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="evergreen-price">1044.19</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Parkas</td>
+			<td>11/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="evergreen-price">1838.35</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Plus Size</td>
+			<td>06/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">2449</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Plus Size Bottoms</td>
+			<td>01/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">2231.54</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Plus Size Jeans</td>
+			<td>03/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">7007.23</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Ponchos</td>
+			<td>29/11/2019</td>
+			<td>29/11/2019</td>
+			<td class="old-category-price">31.94</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Rompers Jumpsuits</td>
+			<td>26/09/2019</td>
+			<td>23/11/2019</td>
+			<td class="old-category-price">597.5</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>YOYOGIRL</td>
+			<td>03/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="best-seller-price">5379.86</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>Short Sleeve</td>
+			<td>29/09/2019</td>
+			<td>11/11/2019</td>
+			<td class="old-category-price">339.72</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Shorts+Skirts</td>
+			<td>19/09/2019</td>
+			<td>23/11/2019</td>
+			<td class="old-category-price">944.74</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Squad Swimsuits</td>
+			<td>06/09/2019</td>
+			<td>14/10/2019</td>
+			<td class="old-category-price">100.91</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Sweater Dresses</td>
+			<td>01/09/2019</td>
+			<td>30/11/2019</td>
+			<td class="evergreen-price">1184.95</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Sweaters</td>
+			<td>20/09/2019</td>
+			<td>21/11/2019</td>
+			<td class="old-category-price">544.6</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Swim</td>
+			<td>06/09/2019</td>
+			<td>07/11/2019</td>
+			<td class="old-category-price">356.33</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		  <tr>
+			<td>Tops</td>
+			<td>07/09/2019</td>
+			<td>03/12/2019</td>
+			<td class="evergreen-price">1960.49</td>
+			<td class="evergreen">Evergreen</td>
+		  </tr>
+		  <tr>
+			<td>Unitards</td>
+			<td>01/09/2019</td>
+			<td>02/12/2019</td>
+			<td class="best-seller-price">10846.07</td>
+			<td class="best-seller">Best Seller</td>
+		  </tr>
+		  <tr>
+			<td>instore-demo-slider</td>
+			<td>02/09/2019</td>
+			<td>20/11/2019</td>
+			<td class="old-category-price">1123.26</td>
+			<td class="old-category">Old Category-No recent demand</td>
+		  </tr>
+		</table>
+		<div id="filterOpt">
+			<h3>Filter By :</h3>
+			<button onclick="filterTable('Best Seller')" type="button" class="btn btn-secondary btn-lg btn-block">Best Selling</button>
+			<button onclick="filterTable('Evergreen')" type="button" class="btn btn-secondary btn-lg btn-block">Evergreen</button>
+			<button onclick="filterTable('Old Category-No recent demand')" type="button" class="btn btn-secondary btn-lg btn-block">Old Category</button>
+		</div>
+		<div id="sortOpt">
+			<h3>Sort in ascending order :</h3>
+			<button onclick="sortTable(0)" type="button" class="btn btn-secondary btn-lg btn-block">Category Name</button>
+			<button onclick="sortTable(1)" type="button" class="btn btn-secondary btn-lg btn-block">First Transaction Date</button>
+			<button onclick="sortTable(2)" type="button" class="btn btn-secondary btn-lg btn-block">Last Transaction Date</button>
+			<button onclick="sortTable(3)" type="button" class="btn btn-secondary btn-lg btn-block">Revenue</button>
+			<button onclick="sortTable(4)" type="button" class="btn btn-secondary btn-lg btn-block">Segment</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="assets/javascript/analysisApp.js"></script>
+</html>
