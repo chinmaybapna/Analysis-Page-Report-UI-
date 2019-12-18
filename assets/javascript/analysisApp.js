@@ -15,10 +15,6 @@ var evergreenPrice = document.getElementsByClassName("evergreen-price"),
     btns = document.getElementsByClassName("btn-light");
 
 
-
-
-
-
 var sumEvergreen = 0;
 for(var i=0; i<evergreenPrice.length; i++) {
     sumEvergreen += parseFloat(evergreenPrice[i].innerHTML);
@@ -38,9 +34,6 @@ for(var i=0; i<oldCategoryPrice.length; i++) {
 
 var sum = parseFloat(sumEvergreen)+parseFloat(sumOldCategory)+parseFloat(sumBestSeller);
 totalRevenue.innerHTML = sum;
-
-
-
 
 
 var numberEvergreen = 0;
@@ -66,9 +59,6 @@ totalCategories.innerHTML = n;
 
 var x = sum/n;
 averageRevenue.innerHTML = x.toFixed(1);
-
-
-
 
 
 var ctx = document.getElementById('myChart1').getContext('2d');
@@ -124,9 +114,6 @@ var myChart = new Chart(cty, {
 });
 
 
-
-
-
 function showFilterOptions() {
     filterOpt.style.display = "block";
     t.style.display = "none";
@@ -156,8 +143,6 @@ function filterTable(segment) {
       btns[0].style.display = "block";
       btns[1].style.display = "block";
 }
-
-
 
 
 function showSortOptions() {
